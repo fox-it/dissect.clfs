@@ -65,7 +65,7 @@ class Container:
                 # from the data size
                 cur_record_data = buf.read(next_record_header.DataSize - next_record_header.Offset)
 
-                yield self.offset + cur_record_offset, cur_record_data, cur_block_data
+                yield log_block_offset + cur_record_offset, cur_record_data, cur_block_data
 
                 # End of log sequence
                 if next_record_header.LsnPrevious == 0:
