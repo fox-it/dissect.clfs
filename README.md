@@ -4,6 +4,16 @@ A Dissect module implementing a parser for the CLFS (Common Log File System) fil
 Currently only supports the persistent variant. For more information,
 please see [the documentation](https://dissect.readthedocs.io/en/latest/projects/dissect.clfs).
 
+## Installation
+
+`dissect.clfs` is available on [PyPI](https://pypi.org/project/dissect.clfs/).
+
+```bash
+pip install dissect.clfs
+```
+
+This module is also automatically installed if you install the `dissect` package.
+
 ## Build and test instructions
 
 This project uses `tox` to build source and wheel distributions. Run the following command from the root folder to build
