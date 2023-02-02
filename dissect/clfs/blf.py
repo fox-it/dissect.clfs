@@ -273,7 +273,6 @@ class TruncateRecord:
     """
 
     def __init__(self, fh: BinaryIO, offset: int):
-
         try:
             self.logblock = BlockHeader(fh=fh, offset=offset)
         except EOFError:
