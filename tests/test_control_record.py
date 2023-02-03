@@ -28,7 +28,6 @@ def test_control_record_c_definitions(control_record_blf):
 
 
 def test_control_record_blf(control_record_blf):
-
     blf = BLF(fh=control_record_blf)
 
     assert blf.c_record.record.RecordHeader.DumpCount == 0x1
@@ -47,6 +46,5 @@ def test_control_record_blf(control_record_blf):
 
 
 def test_control_record_fail(bad_control_record_blf):
-
     with pytest.raises(InvalidRecordBlockError):
         BLF(fh=bad_control_record_blf)
