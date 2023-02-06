@@ -1,5 +1,5 @@
 # Local imports
-from dissect.clfs.c_clfs import c_clfs, BlockHeader
+from dissect.clfs.c_clfs import BlockHeader, c_clfs
 
 
 def test_record_header_c_definitions(control_record_blf):

@@ -4,7 +4,6 @@ from typing import BinaryIO
 # External dependencies
 from dissect.cstruct import cstruct
 
-
 clfs_def = """
 /* ======== Generic Windows ======== */
 flag FILE_ATTRIBUTES : USHORT {
