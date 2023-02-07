@@ -3,7 +3,6 @@ from collections import namedtuple
 # Local imports
 from dissect.clfs.container import Container
 
-
 Data = namedtuple("Data", ["offset", "r_data", "b_data"])
 
 

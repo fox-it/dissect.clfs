@@ -1,8 +1,9 @@
 import pytest
 
+from dissect.clfs.blf import BLF
+
 # Local imports
 from dissect.clfs.c_clfs import c_clfs
-from dissect.clfs.blf import BLF
 from dissect.clfs.exceptions import InvalidRecordBlockError
 
 
