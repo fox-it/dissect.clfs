@@ -136,7 +136,7 @@ typedef struct CLFS_METADATA_BLOCK {
         ULONGLONG Alignment;
     };
 
-    DWORD Image;
+    DWORD ImageSize;
     DWORD Offset;
     CLFS_METADATA_BLOCK_TYPE Type;
     DWORD Padding;
@@ -297,8 +297,7 @@ typedef struct RECORD_HEADER {
 };
 """
 
-c_clfs = cstruct()
-c_clfs.load(clfs_def)
+c_clfs = cstruct().load(clfs_def)
 
 SECTOR_SIZE = 512
 CLFS_CONTROL_RECORD_MAGIC_VALUE = 0xC1F5C1F500005F1C
