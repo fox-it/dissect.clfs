@@ -25,7 +25,7 @@ classifiers = [
   "Topic :: Utilities",
 ]
 dependencies = [
-    "dissect.cstruct>3,<5",
+    "dissect.cstruct>=4.dev,<5",
 ]
 dynamic = ["version"]
 
@@ -33,6 +33,11 @@ dynamic = ["version"]
 homepage = "https://dissect.tools"
 documentation = "https://docs.dissect.tools/en/latest/projects/dissect.clfs"
 repository = "https://github.com/fox-it/dissect.clfs"
+
+[project.optional-dependencies]
+dev = [
+    "dissect.cstruct>=4.0.dev,<5.0.dev",
+]
 
 [tool.black]
 line-length = 120
