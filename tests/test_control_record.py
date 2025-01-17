@@ -1,13 +1,15 @@
+from __future__ import annotations
+
+from typing import BinaryIO
+
 import pytest
 
 from dissect.clfs.blf import BLF
-
-# Local imports
 from dissect.clfs.c_clfs import c_clfs
 from dissect.clfs.exceptions import InvalidRecordBlockError
 
 
-def test_control_record_c_definitions(control_record_blf):
+def test_control_record_c_definitions(control_record_blf: BinaryIO) -> None:
     # Seek to start of the control record
     control_record_blf.seek(0x70)
 
@@ -28,7 +30,7 @@ def test_control_record_c_definitions(control_record_blf):
     assert c_record.Blocks == 0x6
 
 
-def test_control_record_blf(control_record_blf):
+def test_control_record_blf(control_record_blf: BinaryIO) -> None:
     blf = BLF(fh=control_record_blf)
 
     assert blf.c_record.record.RecordHeader.DumpCount == 0x1
@@ -46,6 +48,6 @@ def test_control_record_blf(control_record_blf):
     assert blf.c_record.record.Blocks == 0x6
 
 
-def test_control_record_fail(bad_control_record_blf):
+def test_control_record_fail(bad_control_record_blf: BinaryIO) -> None:
     with pytest.raises(InvalidRecordBlockError):
         BLF(fh=bad_control_record_blf)

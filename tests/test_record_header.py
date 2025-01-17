@@ -1,8 +1,11 @@
-# Local imports
+from __future__ import annotations
+
+from typing import BinaryIO
+
 from dissect.clfs.c_clfs import BlockHeader, c_clfs
 
 
-def test_record_header_c_definitions(control_record_blf):
+def test_record_header_c_definitions(control_record_blf: BinaryIO) -> None:
     r_header = c_clfs.CLFS_LOG_BLOCK_HEADER(control_record_blf)
 
     assert r_header.MajorVersion == 0x15
@@ -21,7 +24,7 @@ def test_record_header_c_definitions(control_record_blf):
     assert r_header.FixupOffset == 0x3F8
 
 
-def test_record_header(control_record_blf):
+def test_record_header(control_record_blf: BinaryIO) -> None:
     logblock = BlockHeader(fh=control_record_blf, offset=0)
 
     assert logblock.header.MajorVersion == 0x15

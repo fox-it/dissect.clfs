@@ -1,8 +1,12 @@
-from typing import BinaryIO, Iterator, Tuple
+from __future__ import annotations
 
-# Local import
+from typing import TYPE_CHECKING, BinaryIO
+
 from dissect.clfs.c_clfs import BlockHeader, c_clfs
 from dissect.clfs.exceptions import InvalidRecordBlockError
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 class Container:
@@ -17,7 +21,7 @@ class Container:
         self.fh = fh
         self.offset = offset
 
-    def _open_block(self, offset: int) -> Tuple[BinaryIO, int]:
+    def _open_block(self, offset: int) -> tuple[BinaryIO, int]:
         """Open the blockheader of every block that is present within the given container.
 
         Returns:
@@ -36,7 +40,7 @@ class Container:
 
         return buf, cur_record_offset
 
-    def records(self) -> Iterator[Tuple[int, bytes, bytes]]:
+    def records(self) -> Iterator[tuple[int, bytes, bytes]]:
         """Parse the records that are present within the log block."""
 
         log_block_offset = self.offset

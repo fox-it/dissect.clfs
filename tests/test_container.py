@@ -1,12 +1,17 @@
-from collections import namedtuple
+from __future__ import annotations
 
-# Local imports
+from typing import BinaryIO, NamedTuple
+
 from dissect.clfs.container import Container
 
-Data = namedtuple("Data", ["offset", "r_data", "b_data"])
+
+class Data(NamedTuple):
+    offset: int
+    r_data: bytes
+    b_data: bytes
 
 
-def test_container_records(dummy_container):
+def test_container_records(dummy_container: BinaryIO) -> None:
     records = []
 
     trans = Container(fh=dummy_container, offset=36864)
