@@ -1,5 +1,6 @@
-from collections import namedtuple
-from typing import BinaryIO, Iterator
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, BinaryIO, NamedTuple
 
 from dissect.clfs.c_clfs import CLFS_CONTROL_RECORD_MAGIC_VALUE, BlockHeader, c_clfs
 from dissect.clfs.exceptions import (
@@ -8,23 +9,33 @@ from dissect.clfs.exceptions import (
     InvalidRecordBlockError,
 )
 
-Context = namedtuple("Context", ["symbol_table", "type"])
-Container = namedtuple("Container", ["name", "size", "id", "type"])
-Stream = namedtuple(
-    "Stream",
-    [
-        "name",
-        "id",
-        "file_attributes",
-        "type",
-        "lsn_archive_tail",
-        "lsn_base",
-        "lsn_last",
-        "lsn_flush",
-        "lsn_physical_base",
-        "offset",
-    ],
-)
+if TYPE_CHECKING:
+    from collections.abc import Iterator
+
+
+class Context(NamedTuple):
+    symbol_table: list
+    type: int
+
+
+class Container(NamedTuple):
+    name: str
+    size: int
+    id: int
+    type: int
+
+
+class Stream(NamedTuple):
+    name: str
+    id: int
+    file_attributes: int
+    type: int
+    lsn_archive_tail: int
+    lsn_base: int
+    lsn_last: int
+    lsn_flush: int
+    lsn_physical_base: int
+    offset: int
 
 
 class ControlRecord:
