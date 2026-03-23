@@ -27,7 +27,6 @@ class Container:
         Returns:
             buf, cur_record_offset: Tuple containing a file-like object of the log block and the current offset.
         """
-
         try:
             log_block = BlockHeader(fh=self.fh, offset=offset)
         except EOFError:
@@ -42,7 +41,6 @@ class Container:
 
     def records(self) -> Iterator[tuple[int, bytes, bytes]]:
         """Parse the records that are present within the log block."""
-
         log_block_offset = self.offset
 
         buf, cur_record_offset = self._open_block(log_block_offset)
