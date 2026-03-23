@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import io
 from typing import BinaryIO
 
@@ -333,5 +335,4 @@ class BlockHeader:
 
     def open(self) -> io.BytesIO:
         """Return a file-like object of the block header."""
-
         return io.BytesIO(self.data)
